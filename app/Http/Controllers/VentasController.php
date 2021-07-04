@@ -1,25 +1,4 @@
 <?php
-/*
-
-  ____          _____               _ _           _
- |  _ \        |  __ \             (_) |         | |
- | |_) |_   _  | |__) |_ _ _ __ _____| |__  _   _| |_ ___
- |  _ <| | | | |  ___/ _` | '__|_  / | '_ \| | | | __/ _ \
- | |_) | |_| | | |  | (_| | |   / /| | |_) | |_| | ||  __/
- |____/ \__, | |_|   \__,_|_|  /___|_|_.__/ \__, |\__\___|
-         __/ |                               __/ |
-        |___/                               |___/
-
-    Blog:       https://parzibyte.me/blog
-    Ayuda:      https://parzibyte.me/blog/contrataciones-ayuda/
-    Contacto:   https://parzibyte.me/blog/contacto/
-
-    Copyright (c) 2020 Luis Cabrera Benito
-    Licenciado bajo la licencia MIT
-
-    El texto de arriba debe ser incluido en cualquier redistribucion
-*/ ?>
-<?php
 
 namespace App\Http\Controllers;
 
@@ -70,11 +49,6 @@ class VentasController extends Controller
         return redirect()->back()->with("mensaje", "Ticket impreso");
     }
 
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function index()
     {
         $ventasConTotales = Venta::join("productos_vendidos", "productos_vendidos.id_venta", "=", "ventas.id")
@@ -84,33 +58,16 @@ class VentasController extends Controller
         return view("ventas.ventas_index", ["ventas" => $ventasConTotales,]);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function create()
     {
         //
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param \Illuminate\Http\Request $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(Request $request)
     {
         //
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param \App\Venta $venta
-     * @return \Illuminate\Http\Response
-     */
     public function show(Venta $venta)
     {
         $total = 0;
@@ -123,35 +80,16 @@ class VentasController extends Controller
         ]);
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param \App\Venta $venta
-     * @return \Illuminate\Http\Response
-     */
     public function edit(Venta $venta)
     {
         //
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param \Illuminate\Http\Request $request
-     * @param \App\Venta $venta
-     * @return \Illuminate\Http\Response
-     */
     public function update(Request $request, Venta $venta)
     {
         //
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param \App\Venta $venta
-     * @return \Illuminate\Http\Response
-     */
     public function destroy(Venta $venta)
     {
         $venta->delete();
